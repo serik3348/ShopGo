@@ -1,0 +1,11 @@
+I send it last week that I just repeat it becaues i wasnot in gradelist
+
+REPORT 1: 
+The Team members: Serik Onbolsyn
+The Product:
+E-commerce app of shop which produce and sells quality shoes .
+It will have basic functions for every store such as registration, autentification, 
+searching items, rating goods and comenting.
+Progress 
+In first week the team planned the design and erd diagram for tables connection between each other
+and started reasources for starting project
