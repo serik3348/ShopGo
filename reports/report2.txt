@@ -1,0 +1,5 @@
+REPORT 2:
+The Team members: Serik Onbolsyn
+The Progress:
+In this week we integrated database with Mysql and tested it succesfully. Right now we are implementing
+our erd(entity relation diagramm) tables to add login ang sign up functions with template.
