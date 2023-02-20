@@ -52,56 +52,22 @@
 package main
 
 import (
-	"database/sql"
-	"fmt"
-
+	authcontroller "ShopGo/controllers"
 	_ "github.com/go-sql-driver/mysql"
+	"net/http"
 )
 
 func main() {
-
-	// create a database object which can be
-	// used to connect with database.
-	db, err := sql.Open("mysql", "root:onbolsyn.2004@tcp(0.0.0.0:3306)/sakila")
-
-	// handle error, if any.
-	if err != nil {
-		panic(err)
-	}
-
-	// Here a SQL query is used to return all
-	// the data from the table user.
-	result, err := db.Query("SELECT actor_id, first_name, last_name FROM sakila.actor")
-
-	// handle error
-	if err != nil {
-		panic(err)
-	}
-
-	// the result object has a method called Next,
-	// which is used to iterate through all returned rows.
-	for result.Next() {
-
-		var actor_id int
-		var first_name string
-		var last_name string
-
-		// The result object provided Scan method
-		// to read row data, Scan returns error,
-		// if any. Here we read id and name returned.
-		err = result.Scan(&actor_id, &first_name, &last_name)
-
-		// handle error
-		if err != nil {
-			panic(err)
-		}
-
-		fmt.Println("Id", actor_id, "Name: ", first_name, "Surname: ", last_name)
-	}
-
-	// database object has a method Close,
-	// which is used to free the resource.
-	// Free the resource when the function
-	// is returned.
-	defer db.Close()
+	//db, err := sql.Open("mysql", "root:onbolsyn.2004@tcp(0.0.0.0:3306)/golang")
+	//
+	//if err != nil {
+	//	panic(err)
+	//}
+	//_, err = db.Exec("CREATE TABLE user(id INT NOT NULL, name VARCHAR(20), email VARCHAR(30), PRIMARY KEY (ID));")
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Print("Successfully Created\n")
+	//defer db.Close()
+	http.HandleFunc("/", authcontroller.Index)
 }
