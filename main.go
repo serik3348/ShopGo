@@ -52,8 +52,9 @@
 package main
 
 import (
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	authcontroller "github.com/serik3348/ShopGo/controllers"
+
 	"net/http"
 )
 
@@ -69,5 +70,9 @@ func main() {
 	//}
 	//fmt.Print("Successfully Created\n")
 	//defer db.Close()
-	http.HandleFunc("/", authcontroller.Index)
+	http.HandleFunc("/", Index)
+	http.HandleFunc("/login", Login)
+	http.HandleFunc("/logout", Logout)
+	fmt.Println("Server address : http://localhost:3000")
+	http.ListenAndServe(":3000", nil)
 }
