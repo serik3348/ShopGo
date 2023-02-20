@@ -52,8 +52,8 @@
 package main
 
 import (
-	authcontroller "ShopGo/controllers"
 	_ "github.com/go-sql-driver/mysql"
+	authcontroller "github.com/serik3348/ShopGo/controllers"
 	"net/http"
 )
 
