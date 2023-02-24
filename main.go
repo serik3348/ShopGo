@@ -73,6 +73,7 @@ func main() {
 	http.HandleFunc("/", Index)
 	http.HandleFunc("/login", Login)
 	http.HandleFunc("/logout", Logout)
+	http.HandleFunc("/register", Register)
 	fmt.Println("Server address : http://localhost:3000")
 	http.ListenAndServe(":3000", nil)
 }
