@@ -1,0 +1,8 @@
+REPORT 3:
+The Team members: Serik Onbolsyn
+The Progress:
+In this week we are done with sign up and sign in pages.
+It fully works encrypts password and check unique values such as username and email.
+We added log out function.
+Now the task for the next week is to create carting system to store your chosen items .
+And then we can add searching and work for style.
