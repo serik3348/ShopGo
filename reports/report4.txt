@@ -1,0 +1,7 @@
+REPORT 4:
+The Team members: Serik Onbolsyn
+Progress:
+In this week we created a product and cart system.
+We can add products and check our carts also we can remove items that we don`t need anymore.
+We created table product which has columns for id name price quantity and photo.
+We added static files to store our images.
