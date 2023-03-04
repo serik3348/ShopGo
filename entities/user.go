@@ -2,7 +2,7 @@ package entities
 
 type User struct {
 	Id             int64
-	Nameandsurname string `validate:"required" label:"Name and Surname"`
+	Nameandsurname string `validate:"required" label:"Name and Surname" `
 	Email          string `validate:"required,email,isunique=users-email"`
 	Username       string `validate:"required,gte=3,isunique=users-username"`
 	Password       string `validate:"required,gte=6"`
