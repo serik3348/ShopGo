@@ -6,7 +6,7 @@
 </head>
 <body>
 
-
+<h2>{{.nameandsurname}}</h2>
 <h3>Cart Info</h3>
 <table border="1">
 <tr>
@@ -23,7 +23,7 @@
 
 <tr>
 <td><a href="/cart/remove?id={{.Product.Id}}">Remove</a></td>
-    <td>{{.Product.Id}}</td>
+
     <td>{{.Product.Name}}</td>
     <td>
         <img src="/static/images/{{.Product.Photo}}" width="120">

@@ -17,14 +17,15 @@ func IndexCart(w http.ResponseWriter, r *http.Request) {
 	json.Unmarshal([]byte(strCart), &cart)
 
 	data := map[string]interface{}{
-		"cart":  cart,
-		"total": total(cart),
+		"cart":           cart,
+		"total":          total(cart),
+		"nameandsurname": session.Values["nameandsurname"],
 	}
 
 	tmp, _ := template.New("index.html").Funcs(template.FuncMap{
 		"total": func(item entities.Item) float64 {
 			return item.Product.Price * float64(item.Quantity)
-		}}).ParseFiles("views/cart/index.html")
+		}}).ParseFiles("midterm1/views/cart/index.html")
 	tmp.Execute(w, data)
 }
 
@@ -61,6 +62,7 @@ func Buy(w http.ResponseWriter, r *http.Request) {
 		bytesCart, _ := json.Marshal(cart)
 		session.Values["cart"] = string(bytesCart)
 	}
+
 	session.Save(r, w)
 	http.Redirect(w, r, "/cart", http.StatusSeeOther)
 }

@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("static"))
+	fs := http.FileServer(http.Dir("midterm1/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/", controllers.Index)
 	http.HandleFunc("/login", controllers.Login)
