@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"server/config"
 	"server/entities"
 )
@@ -45,5 +46,27 @@ func (*ProductModel) Find(id int64) (entities.Product, error) {
 			}
 			return product, nil
 		}
+	}
+}
+
+func (*ProductModel) Update(id int64) {
+	db, err := config.DBConn()
+	if err == nil {
+		//var quantity int64
+		//rows, _ := db.Query("SELECT quantity FROM product WHERE id=?", id)
+		//if err := rows.Scan(&quantity); err != nil {
+		//	fmt.Println("error during select quantity")
+		//
+		//}
+
+		fmt.Println(id)
+		row, err := db.Query("UPDATE product SET quantity=quantity-1 WHERE id=?", id)
+		if err != nil {
+			panic(err.Error())
+		}
+		defer row.Close()
+
+		// Execute the SQL statement
+
 	}
 }

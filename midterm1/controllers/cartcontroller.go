@@ -56,9 +56,12 @@ func Buy(w http.ResponseWriter, r *http.Request) {
 				Product:  product,
 				Quantity: 1,
 			})
+
 		} else {
 			cart[index].Quantity++
+			productModel.Update(cart[index].Product.Id)
 		}
+
 		bytesCart, _ := json.Marshal(cart)
 		session.Values["cart"] = string(bytesCart)
 	}
