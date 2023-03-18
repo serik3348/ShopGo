@@ -21,6 +21,7 @@ func main() {
 	http.HandleFunc("/cart/index", controllers.IndexCart)
 	http.HandleFunc("/cart/buy", controllers.Buy)
 	http.HandleFunc("/cart/remove", controllers.Remove)
+	http.HandleFunc("/product/search", controllers.Search)
 	fmt.Println("Server address : http://localhost:3000")
 	http.ListenAndServe(":3000", nil)
 }

@@ -43,6 +43,7 @@ func Buy(w http.ResponseWriter, r *http.Request) {
 			Product:  product,
 			Quantity: 1,
 		})
+		productModel.Decrease(id)
 		bytesCart, _ := json.Marshal(cart)
 		session.Values["cart"] = string(bytesCart)
 	} else {
@@ -56,10 +57,10 @@ func Buy(w http.ResponseWriter, r *http.Request) {
 				Product:  product,
 				Quantity: 1,
 			})
-
+			productModel.Decrease(id)
 		} else {
 			cart[index].Quantity++
-			productModel.Update(cart[index].Product.Id)
+			productModel.Decrease(cart[index].Product.Id)
 		}
 
 		bytesCart, _ := json.Marshal(cart)
@@ -107,5 +108,7 @@ func total(cart []entities.Item) float64 {
 
 func remove(cart []entities.Item, index int) []entities.Item {
 	copy(cart[index:], cart[index+1:])
+	var productModel models.ProductModel
+	productModel.Increase(cart[index].Product.Id, cart[index].Quantity)
 	return cart[:len(cart)-1]
 }
