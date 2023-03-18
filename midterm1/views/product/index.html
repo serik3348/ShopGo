@@ -6,8 +6,12 @@
 </head>
 <body>
 <h2>{{.nameandsurname}}</h2>
+<form action="/product/search" method="post">
+    <label for="fer">Id </label>
+    <input type="text" name="id" id="fer" placeholder="id">
+    <input type="submit">
+</form>
 
-<h3>Product List</h3>
 <table border="1">
 <tr>
 
@@ -35,7 +39,9 @@
     </td>
 </tr>
 
+
 {{end}}
 </table>
+<a href="/cart">Cart INFO</a>
 </body>
 </html>

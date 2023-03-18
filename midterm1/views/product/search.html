@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>{{.nameandsurname}}</h2>
+<table border="1">
+    <tr>
+
+        <td>Id</td>
+        <td>Name</td>
+        <td>Photo</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Action</td>
+    </tr>
+
+
+
+    <tr>
+
+        <td>{{.product.Id}}</td>
+        <td>{{.product.Name}}</td>
+        <td>
+            <img src="/static/images/{{.product.Photo}}" width="120">
+        </td>
+        <td>{{.product.Price}}</td>
+        <td>{{.product.Quantity}}</td>
+        <td>
+            <a href="/cart/buy?id={{.product.Id}}">Buy</a>
+        </td>
+    </tr>
+
+
+</table>
+</body>
+</html>
+</body>
+</html>
