@@ -19,6 +19,7 @@ text : the text
 date : the date
    
 When we search item or choose them it will bring us to the page of one specific item with the comment attached to the object and will show who wrote this and when 
+
 2. Filtering:
    
 We will filter our items by price and quantity , also we will divide our shoes for seasons.
