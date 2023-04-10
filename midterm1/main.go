@@ -25,5 +25,8 @@ func main() {
 	http.HandleFunc("/product/filter", controllers.Filter)
 
 	fmt.Println("Server address : http://localhost:3000")
-	http.ListenAndServe(":3000", nil)
+	err := http.ListenAndServe(":3000", nil)
+	if err != nil {
+		return
+	}
 }

@@ -19,6 +19,25 @@ func IndexProd(w http.ResponseWriter, r *http.Request) {
 	tmp.Execute(w, data)
 }
 
+func Filter(w http.ResponseWriter, r *http.Request) {
+
+	//query := r.URL.Query()
+	//id, _ := strconv.ParseInt(query.Get("id"), 10, 64)
+	var name = r.FormValue("name")
+
+	var productModel models.ProductModel
+	product, _ := productModel.Filter1(name)
+	session, _ := config.Store.Get(r, config.SESSION_ID)
+	data := map[string]interface{}{
+		"name":           name,
+		"product":        product,
+		"nameandsurname": session.Values["nameandsurname"],
+	}
+	tmp, _ := template.ParseFiles("midterm1/views/product/search.html")
+	tmp.Execute(w, data)
+
+}
+
 func Search(w http.ResponseWriter, r *http.Request) {
 
 	//query := r.URL.Query()
