@@ -27,12 +27,12 @@ func (*ProductModel) FindAll() ([]entities.Product, error) {
 		}
 	}
 }
-func (*ProductModel) Filter1(filter string) ([]entities.Product, error) {
+func (*ProductModel) Filter(fromorder string, toorder string) ([]entities.Product, error) {
 	db, err := config.DBConn()
 	if err != nil {
 		return nil, err
 	} else {
-		rows, err2 := db.Query("select * from product order by ?", filter)
+		rows, err2 := db.Query("select * from product where price >= ? && price <= ? order by price desc", fromorder, toorder)
 		if err2 != nil {
 			return nil, err2
 		} else {
@@ -42,6 +42,7 @@ func (*ProductModel) Filter1(filter string) ([]entities.Product, error) {
 				rows.Scan(&product.Id, &product.Name, &product.Price, &product.Quantity, &product.Photo)
 				products = append(products, product)
 			}
+
 			return products, nil
 		}
 	}
@@ -104,7 +105,7 @@ func (*ProductModel) Increase(id int64, num int64) {
 	db, err := config.DBConn()
 	if err == nil {
 
-		row, err := db.Query("UPDATE product SET quantity=quantity+? WHERE id=?", num, id)
+		row, err := db.Query("UPDATE product SET quantity=quantity+? WHERE id =?", num, id)
 		if err != nil {
 			panic(err.Error())
 		}

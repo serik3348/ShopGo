@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h2>{{.nameandsurname}}</h2>
+
+<form action="/filter" method="post">
+  <label for="fer">Filter of Item </label>
+  <input type="text" name="filter" id="fer" placeholder="filter">
+  <input type="submit">
+</form>
+
+<a href="/filter">Price</a>
+
+
+
+
+
+<table border="1">
+  <tr>
+
+    <td>Id</td>
+    <td>Name</td>
+    <td>Photo</td>
+    <td>Price</td>
+    <td>Quantity</td>
+    <td>Action</td>
+  </tr>
+  {{range .products}}
+
+
+  <tr>
+
+    <td>{{.Id}}</td>
+    <td>{{.Name}}</td>
+    <td>
+      <img src="/static/images/{{.Photo}}" width="120">
+    </td>
+    <td>{{.Price}}</td>
+    <td>{{.Quantity}}</td>
+    <td>
+      <a href="/cart/buy?id={{.Id}}">Buy</a>
+    </td>
+  </tr>
+
+
+  {{end}}
+</table>
+<a href="/cart">Cart INFO</a>
+</body>
+</html>
