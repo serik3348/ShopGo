@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("midterm1/static"))
+	fs := http.FileServer(http.Dir("midterm2/static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.HandleFunc("/", controllers.Index)
 	http.HandleFunc("/login", controllers.Login)
@@ -23,6 +23,10 @@ func main() {
 	http.HandleFunc("/cart/remove", controllers.Remove)
 	http.HandleFunc("/product/search", controllers.Search)
 	http.HandleFunc("/product/filter", controllers.Filter)
+	http.HandleFunc("/product/comment", controllers.WriteComment)
+	http.HandleFunc("/product/rank", controllers.Rank)
+
+	//http.HandleFunc("/comment", controllers.Comment)
 
 	fmt.Println("Server address : http://localhost:3000")
 	http.ListenAndServe(":3000", nil)

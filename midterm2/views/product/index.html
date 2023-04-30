@@ -32,6 +32,7 @@
     <td>Photo</td>
     <td>Price</td>
     <td>Quantity</td>
+
     <td>Action</td>
 </tr>
 {{range .products}}
@@ -46,6 +47,7 @@
     </td>
     <td>{{.Price}}</td>
     <td>{{.Quantity}}</td>
+
     <td>
         <a href="/cart/buy?id={{.Id}}">Buy</a>
     </td>
@@ -53,6 +55,8 @@
 
 
 {{end}}
+
+
 </table>
 <a href="/cart">Cart INFO</a>
 </body>

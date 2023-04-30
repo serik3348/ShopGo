@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>{{.nameandsurname}}</h2>
+<table border="1">
+    <tr>
+
+        <td>Id</td>
+        <td>Name</td>
+        <td>Photo</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Action</td>
+    </tr>
+
+
+
+    <tr>
+
+        <td>{{.product.Id}}</td>
+        <td>{{.product.Name}}</td>
+        <td>
+            <img src="/static/images/{{.product.Photo}}" width="120">
+        </td>
+        <td>{{.product.Price}}</td>
+        <td>{{.product.Quantity}}</td>
+
+
+        <td>
+            <a href="/cart/buy?id={{.product.Id}}">Buy</a>
+        </td>
+    </tr>
+
+
+</table>
+<br>
+<table border="1">
+    {{range .comments}}
+    <tr>
+
+        <td>{{.Id}}</td>
+        <td>{{.Username}}</td>
+        <td>{{.ObjectName}}</td>
+        <td>{{.Text}}</td>
+        <td>{{.Date}}</td>
+
+    </tr>
+    {{end}}
+</table>
+<br>
+<h1>The average rank of the object is {{.answer}}</h1>
+
+<!--<h2>Write your comment {{.username}}</h2>-->
+
+<!--<form action="/product/comment" method="post">-->
+<!--    <label  for="fer4">Shoes name</label>-->
+<!--&lt;!&ndash;    <input type="text" name="object_name" id="fer3" placeholder="shoes name">&ndash;&gt;-->
+
+<!--    <input type="text" name="text" id="fer4" placeholder="comment">-->
+
+<!--    <input type="submit">-->
+<!--</form>-->
+
+<h2>Write your comment {{.username}}</h2>
+<form action="/product/comment" method="post">
+
+    <label for="fer">Shoes </label>
+    <input type="text" name="id" id="fer" placeholder="shoes">
+    <label for="fer1">Comment </label>
+    <input type="text" name="text" id="fer1" placeholder="comment">
+
+
+
+    <input type="submit">
+</form>
+
+
+<h2>Rank this item {{.username}}</h2>
+<form action="/product/rank" method="post">
+    <label >Name of the object </label>
+    <input type="text" name="rankname"  placeholder="rank name">
+    <label >Rank out of 5 </label>
+    <input type="number" step="0.01" name="ranking"  placeholder="rank" >
+
+
+    <input type="submit">
+</form>
+
+
+
+
+
+</body>
+</html>

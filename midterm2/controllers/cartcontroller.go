@@ -25,7 +25,7 @@ func IndexCart(w http.ResponseWriter, r *http.Request) {
 	tmp, _ := template.New("index.html").Funcs(template.FuncMap{
 		"total": func(item entities.Item) float64 {
 			return item.Product.Price * float64(item.Quantity)
-		}}).ParseFiles("midterm1/views/cart/index.html")
+		}}).ParseFiles("midterm2/views/cart/index.html")
 	tmp.Execute(w, data)
 }
 

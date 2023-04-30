@@ -32,6 +32,20 @@ func (u UserModel) Where(user *entities.User, fieldName, fieldValue string) erro
 	}
 	return nil
 }
+
+//	func (u UserModel) CheckIsRanked(username string) bool {
+//		row, _ := u.db.Query("select ranked from users where username=?", username)
+//		var name string
+//		defer row.Close()
+//		for row.Next() {
+//			row.Scan(name)
+//		}
+//		if name == "null" {
+//			return true
+//		}
+//
+//		return false
+//	}
 func (u UserModel) Create(user entities.User) (int64, error) {
 	result, err := u.db.Exec("INSERT INTO users (nameandsurname,email,username,password) values (?,?,?,?)",
 		user.Nameandsurname, user.Email, user.Username, user.Password)
@@ -42,4 +56,9 @@ func (u UserModel) Create(user entities.User) (int64, error) {
 
 	lastInserted, _ := result.LastInsertId()
 	return lastInserted, nil
+}
+
+func (u UserModel) RankedValue(username string) {
+	u.db.Exec("update users set ranked='yes' where username=?", username)
+
 }

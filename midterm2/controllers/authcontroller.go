@@ -32,7 +32,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 				"nameandsurname": session.Values["nameandsurname"],
 			}
 
-			temp, _ := template.ParseFiles("midterm1/views/index.html")
+			temp, _ := template.ParseFiles("midterm2/views/index.html")
 			temp.Execute(w, data)
 		}
 	}
@@ -40,7 +40,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 func Login(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
-		temp, _ := template.ParseFiles("midterm1/views/login.html")
+		temp, _ := template.ParseFiles("midterm2/views/login.html")
 		temp.Execute(w, nil)
 	} else if r.Method == http.MethodPost {
 		r.ParseForm()
@@ -55,7 +55,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			data := map[string]interface{}{
 				"validation": errorMessages,
 			}
-			temp, _ := template.ParseFiles("midterm1/views/login.html")
+			temp, _ := template.ParseFiles("midterm2/views/login.html")
 			temp.Execute(w, data)
 		} else {
 			var user entities.User
@@ -75,7 +75,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 				data := map[string]interface{}{
 					"error": message,
 				}
-				temp, _ := template.ParseFiles("midterm1/views/login.html")
+				temp, _ := template.ParseFiles("midterm2/views/login.html")
 				temp.Execute(w, data)
 			} else {
 				session, _ := config.Store.Get(r, config.SESSION_ID)
@@ -103,7 +103,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 
 func Register(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
-		temp, _ := template.ParseFiles("midterm1/views/register.html")
+		temp, _ := template.ParseFiles("midterm2/views/register.html")
 		temp.Execute(w, nil)
 	} else if r.Method == http.MethodPost {
 		r.ParseForm()
@@ -123,7 +123,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 				"validation": errorMessages,
 				"user":       user,
 			}
-			temp, _ := template.ParseFiles("midterm1/views/register.html")
+			temp, _ := template.ParseFiles("midterm2/views/register.html")
 			temp.Execute(w, data)
 		} else {
 			hashPassword, _ := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
@@ -134,7 +134,7 @@ func Register(w http.ResponseWriter, r *http.Request) {
 			data := map[string]interface{}{
 				"pesan": "Successful registration",
 			}
-			temp, _ := template.ParseFiles("midterm1/views/register.html")
+			temp, _ := template.ParseFiles("midterm2/views/register.html")
 			temp.Execute(w, data)
 		}
 	}

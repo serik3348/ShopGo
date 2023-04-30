@@ -16,6 +16,7 @@
     <td>Photo</td>
     <td>Price</td>
     <td>Quantity</td>
+
     <td>Sub Total</td>
 </tr>
 {{range .cart}}
@@ -30,6 +31,7 @@
     </td>
     <td>{{.Product.Price}}</td>
     <td>{{.Quantity}}</td>
+
     <td>{{total .}}</td>
 </tr>
 

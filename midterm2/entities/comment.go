@@ -3,7 +3,7 @@ package entities
 type Comment struct {
 	Id         int64  `json:"id"`
 	Username   string `json:"username"`
-	ObjectName string `json:"object_name"`
+	ObjectName string `json:"objectname"`
 	Text       string `json:"text"`
-	Data       string `json:"data"`
+	Date       string `json:"date"`
 }
